@@ -1,0 +1,13 @@
+server:
+  port: 1000
+spring:
+  application:
+    name: atguigu-crowd-eureka
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: false         # 自己就是注册中心，所以不需要“从注册中心取回信息”
+    register-with-eureka: false   # 自己就是注册中心，所以自己不注册自己
+    service-url:                  # 客户端访问 Eureka 时使用的地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

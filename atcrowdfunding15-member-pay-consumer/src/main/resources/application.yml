@@ -1,0 +1,29 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: atguigu-crowd-pay
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  redis: # 配置redis的地址
+    host: 192.168.241.130
+  session: # session存储的类型
+    store-type: redis
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+ali:
+  pay:
+    appId:
+    merchantPrivateKey:                                   # 商户私钥
+    alipayPublicKey:                                      # 支付宝公钥
+    notifyUrl: http://56x6a9.natappfree.cc/pay/notify     # 支付宝需要访问我们，所以内网穿透启动后填写
+    returnUrl: http://localhost/pay/return                # return时浏览器访问，所以可以通过zuul访问
+    signType: RSA2
+    charset: utf-8                                        # 字符集编码
+    gatewayUrl: https://openapi.alipaydev.com/gateway.do  # 支付宝网关

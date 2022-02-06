@@ -1,0 +1,29 @@
+server:
+  port: 80
+spring:
+  application:
+    name: atguigu-crowd-zuul
+  redis:
+    host: 192.168.241.130
+  session:
+    store-type: redis
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+zuul:
+  ignored-services: "*"                         # 忽略原本微服务名称
+  sensitive-headers: "*"                        # 在zuul向其他微服务重定向时保持原本的请求体和响应头信息
+  routes:                                       # 自定义路由规则
+    crowd-portal:                               # 自定义路由规则名称
+      service-id: atguigu-crowd-auth            # 微服务名称
+      path: /**                                 # /**表示多层路径，/*表示单层路径（此时就无法访问静态资源）routes:                            # 自定义路由规则
+    crowd-project:                              # 自定义路由规则名称
+      service-id: atguigu-crowd-project         # 微服务名称
+      path: /project/**                         # auth已经通过/**访问，此时需要加个/project:                              # 自定义路由规则名称
+    crowd-order:                                # 自定义路由规则名称
+      service-id: atguigu-crowd-order           # 微服务名称
+      path: /order/**                           # auth已经通过/**访问，此时需要加个/order:                                # 自定义路由规则名称
+    crowd-pay:                                  # 自定义路由规则名称
+      service-id: atguigu-crowd-pay             # 微服务名称
+      path: /pay/**                             # auth已经通过/**访问，此时需要加个/pay

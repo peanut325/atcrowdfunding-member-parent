@@ -1,0 +1,22 @@
+server:
+  port: 2000
+eureka:                       # 注册eureka
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+spring:
+  datasource:                 # 配置数据源
+    name: mydb
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: LJLljl20020728.+
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/project_crowd?serverTimezone=UTC # 注意配置时区
+  application:
+    name: atguigu-crowd-mysql # 客户端名
+mybatis:                      # mybatis配置
+  mapper-locations: classpath*:/mybatis/mapper/*.xml
+logging:                      # 打印sql日志
+  level:
+    com.atguigu.crowd.mapper: debug
+    com.atguigu.crowd.test: debug

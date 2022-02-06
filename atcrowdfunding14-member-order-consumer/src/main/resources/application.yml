@@ -1,0 +1,19 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: atguigu-crowd-order
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  redis: # 配置redis的地址
+    host: 192.168.241.130
+  session: # session存储的类型
+    store-type: redis
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

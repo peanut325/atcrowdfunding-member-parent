@@ -1,0 +1,26 @@
+server:
+  port: 5000
+spring:
+  application:
+    name: atguigu-crowd-project
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  redis: # 配置redis的地址
+    host: 192.168.241.130
+  session: # session存储的类型
+    store-type: redis
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+aliyun:
+  oss:
+    access-key-id:                                     # 你创建子账户的AccessKey ID
+    access-key-secret:                                 # 你创建子账户的AccessKey secret
+    bucket-domain: http://project-atcrowdfunding.oss-cn-chengdu.aliyuncs.com # bucket中查找外网访问域名
+    bucket-name: project-atcrowdfunding
+    end-point: http://oss-cn-chengdu.aliyuncs.com
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

@@ -1,0 +1,27 @@
+server:
+  port: 4000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka/
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  application:
+    name: atguigu-crowd-auth
+  redis:    # 配置redis的地址
+    host: 192.168.241.130
+  session:  # session存储的类型
+    store-type: redis
+short:      # 配置短信api的所需属性值
+  message:
+    host: https://fsmsn.market.alicloudapi.com
+    path: /fsms132
+    appcode: 1d96cd2b0d044fde8fc7c5c828dd370d
+    sign: 175622
+    skin: 1
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
